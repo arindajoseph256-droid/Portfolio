@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="595" height="842" viewBox="0 0 595 842">
+  <rect width="595" height="842" fill="#ffffff"/>
+  <rect x="0" y="0" width="595" height="140" fill="#0f172a"/>
+  <text x="40" y="70" font-family="Arial, sans-serif" font-size="30" font-weight="800" fill="#ffffff">Arinda Joseph</text>
+  <text x="40" y="102" font-family="Arial, sans-serif" font-size="15" fill="#93c5fd">Software Engineer · Full-Stack &amp; AI Developer · UI/UX Designer</text>
+  <text x="40" y="122" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1">Uganda · arindajoseph256@gmail.com · github.com/arindajoseph256-droid</text>
+
+  <text x="40" y="185" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#2563eb">Profile</text>
+  <text x="40" y="210" font-family="Arial, sans-serif" font-size="12" fill="#334155">Software engineer building intelligent, production-ready software that solves</text>
+  <text x="40" y="228" font-family="Arial, sans-serif" font-size="12" fill="#334155">real-world problems, with a focus on modern web platforms and applied AI.</text>
+
+  <text x="40" y="275" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#2563eb">Skills</text>
+  <text x="40" y="300" font-family="Arial, sans-serif" font-size="12" fill="#334155">Next.js, React, TypeScript, Node.js, Python, Tailwind CSS, PostgreSQL,</text>
+  <text x="40" y="318" font-family="Arial, sans-serif" font-size="12" fill="#334155">MongoDB, Firebase, OpenAI / LLMs, Figma, Docker, Git.</text>
+
+  <text x="40" y="365" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#2563eb">Experience</text>
+  <text x="40" y="390" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">Freelance Full-Stack Developer — 2023 to Present</text>
+  <text x="40" y="410" font-family="Arial, sans-serif" font-size="12" fill="#334155">Designing and building web applications for clients end to end.</text>
+  <text x="40" y="438" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">Founder &amp; Lead Developer — EduShare</text>
+  <text x="40" y="458" font-family="Arial, sans-serif" font-size="12" fill="#334155">AI-powered learning platform for sharing educational resources.</text>
+
+  <text x="40" y="505" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#2563eb">Education</text>
+  <text x="40" y="530" font-family="Arial, sans-serif" font-size="12" fill="#334155">BSc. Computer Science (In Progress) · Self-taught programming journey.</text>
+
+  <text x="40" y="800" font-family="Arial, sans-serif" font-size="10" fill="#94a3b8">This is a placeholder CV generated for the portfolio. Replace with your real resume.</text>
+</svg>

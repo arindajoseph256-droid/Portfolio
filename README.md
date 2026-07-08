@@ -1,36 +1,130 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Arinda Joseph — Portfolio
 
-## Getting Started
+A premium, production-ready personal portfolio for **Arinda Joseph** — Software
+Engineer, Full-Stack & AI Developer, and UI/UX Designer. Built with the modern
+web stack and engineered for performance, accessibility and visual excellence.
 
-First, run the development server:
+![Portfolio preview](public/og-image.png)
+
+## ✨ Features
+
+- **Next.js 14 App Router** with TypeScript and a clean, scalable architecture
+- **Dark / light mode** with instant switching and persistence (`next-themes`)
+- **Framer Motion** animations throughout (fade, slide, zoom, parallax, floats)
+- **Custom animated cursor**, **command palette** (`⌘/Ctrl + K`), scroll progress
+  bar, loading screen and back-to-top button
+- **Particle constellation** hero background + floating 3D-style shapes
+- **Fully responsive**, mobile-first, glassmorphism + gradient design system
+- **Accessibility**: semantic HTML, ARIA labels, keyboard nav, reduced-motion
+- **SEO**: dynamic metadata, Open Graph, Twitter cards, JSON-LD structured data,
+  `sitemap.xml`, `robots.txt`, canonical URLs
+- **PWA**: web manifest, installable, offline support via a service worker
+- **13 sections**: Home, About, Skills, Projects, Experience, Education,
+  Certifications, Achievements, Services, Testimonials, Blog, Gallery, Contact
+
+## 🛠 Tech Stack
+
+| Area        | Tools                                                     |
+| ----------- | -------------------------------------------------------- |
+| Framework   | Next.js 14 (App Router), React 18, TypeScript            |
+| Styling     | Tailwind CSS, `tailwindcss-animate`, CSS variables       |
+| Animation   | Framer Motion                                            |
+| Icons       | Lucide React, React Icons                                |
+| Theming     | next-themes                                              |
+| Deployment  | Vercel                                                   |
+
+## 🚀 Getting Started
 
 ```bash
+# 1. Install dependencies
+npm install
+
+# 2. (Optional) configure environment variables
+cp .env.example .env.local
+
+# 3. Start the dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Available scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Script          | Description                       |
+| --------------- | --------------------------------- |
+| `npm run dev`   | Start the development server      |
+| `npm run build` | Create an optimized production build |
+| `npm run start` | Run the production build          |
+| `npm run lint`  | Run ESLint                        |
 
-## Learn More
+## ⚙️ Configuration
 
-To learn more about Next.js, take a look at the following resources:
+All personal content lives in editable data files — no need to touch components:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/constants/site.ts   # name, role, contact info, social links, nav items
+src/data/               # skills, projects, experience, education, blog, etc.
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Environment variables
 
-## Deploy on Vercel
+See [`.env.example`](.env.example). All are optional:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Variable                   | Purpose                                             |
+| -------------------------- | --------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL`     | Canonical site URL for SEO / sitemap                |
+| `NEXT_PUBLIC_FORMSPREE_ID` | Formspree form ID to enable a live contact form     |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> The contact form works out of the box in **demo mode** (simulated success).
+> To receive real submissions, create a free [Formspree](https://formspree.io)
+> form and set `NEXT_PUBLIC_FORMSPREE_ID`.
+
+## 📁 Project Structure
+
+```
+src/
+├── animations/     # Framer Motion variants
+├── app/            # App Router: layout, page, 404, sitemap, robots, manifest
+├── components/
+│   ├── cards/      # Reusable card components
+│   ├── layout/     # Navbar, footer, cursor, command palette, etc.
+│   └── ui/         # Buttons, badges, headings, primitives
+├── constants/      # Site config & navigation
+├── context/        # Theme provider
+├── data/           # Content data (skills, projects, blog, ...)
+├── hooks/          # Custom React hooks
+├── lib/            # Utilities (cn, scroll helpers)
+├── sections/       # Page sections (hero, about, projects, ...)
+└── types/          # Shared TypeScript types
+```
+
+## ☁️ Deployment
+
+This project is optimized for **[Vercel](https://vercel.com)**:
+
+1. Push this repository to GitHub.
+2. Import the repo into Vercel.
+3. (Optional) add the environment variables from `.env.example`.
+4. Deploy — Vercel auto-detects Next.js. No extra configuration needed.
+
+You can also deploy anywhere that supports Node.js:
+
+```bash
+npm run build && npm run start
+```
+
+## 🎨 Customization
+
+- **Colors / theme**: edit the CSS variables in `src/app/globals.css` and the
+  Tailwind theme in `tailwind.config.ts`.
+- **Content**: edit files in `src/data/` and `src/constants/site.ts`.
+- **CV**: replace `public/arinda-joseph-cv.pdf` with your real résumé.
+- **Images / icons**: assets live in `public/` (OG image, favicons, manifest icons).
+
+## 📄 License
+
+Released under the [MIT License](LICENSE).
+
+---
+
+Built with ❤️ using Next.js & Tailwind CSS.
