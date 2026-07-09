@@ -1,4 +1,3 @@
-
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -10,8 +9,8 @@ import {
   Github,
   Linkedin,
 } from "lucide-react";
+import { useLocation } from "wouter";
 import { navItems, siteConfig } from "@/constants/site";
-import { scrollToId } from "@/lib/utils";
 
 interface CommandItem {
   label: string;
@@ -23,6 +22,7 @@ interface CommandItem {
 export function CommandPalette() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [, navigate] = useLocation();
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -39,21 +39,19 @@ export function CommandPalette() {
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     if (!open) setQuery("");
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => { document.body.style.overflow = ""; };
   }, [open]);
 
-  const go = (id: string) => {
+  const go = (href: string) => {
     setOpen(false);
-    setTimeout(() => scrollToId(id), 120);
+    navigate(href);
   };
 
   const items: CommandItem[] = useMemo(() => {
     const navCommands: CommandItem[] = navItems.map((item) => ({
       label: `Go to ${item.label}`,
       hint: "Navigation",
-      action: () => go(item.href.replace("#", "")),
+      action: () => go(item.href),
       keywords: item.label,
     }));
 
@@ -61,54 +59,41 @@ export function CommandPalette() {
       {
         label: "Download CV",
         hint: "Action",
-        action: () => {
-          window.open(siteConfig.cv, "_blank");
-          setOpen(false);
-        },
+        action: () => { window.open(siteConfig.cv, "_blank"); setOpen(false); },
         keywords: "resume cv download",
       },
       {
         label: "Email me",
         hint: "Contact",
-        action: () => {
-          window.location.href = siteConfig.socials.email;
-          setOpen(false);
-        },
+        action: () => { window.location.href = siteConfig.socials.email; setOpen(false); },
         keywords: "email contact mail",
       },
       {
         label: "Open GitHub",
         hint: "Social",
-        action: () => {
-          window.open(siteConfig.socials.github, "_blank");
-          setOpen(false);
-        },
+        action: () => { window.open(siteConfig.socials.github, "_blank"); setOpen(false); },
         keywords: "github code",
       },
       {
         label: "Open LinkedIn",
         hint: "Social",
-        action: () => {
-          window.open(siteConfig.socials.linkedin, "_blank");
-          setOpen(false);
-        },
+        action: () => { window.open(siteConfig.socials.linkedin, "_blank"); setOpen(false); },
         keywords: "linkedin",
       },
     ];
 
     return [...actions, ...navCommands];
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const filtered = items.filter((item) =>
-    `${item.label} ${item.keywords ?? ""}`
-      .toLowerCase()
-      .includes(query.toLowerCase()),
+    `${item.label} ${item.keywords ?? ""}`.toLowerCase().includes(query.toLowerCase()),
   );
 
   const iconFor = (label: string) => {
-    if (label.includes("CV")) return <FileDown className="h-4 w-4" />;
-    if (label.includes("Email")) return <Mail className="h-4 w-4" />;
-    if (label.includes("GitHub")) return <Github className="h-4 w-4" />;
+    if (label.includes("CV"))       return <FileDown className="h-4 w-4" />;
+    if (label.includes("Email"))    return <Mail className="h-4 w-4" />;
+    if (label.includes("GitHub"))   return <Github className="h-4 w-4" />;
     if (label.includes("LinkedIn")) return <Linkedin className="h-4 w-4" />;
     return <CornerDownLeft className="h-4 w-4" />;
   };
@@ -150,12 +135,10 @@ export function CommandPalette() {
                   autoFocus
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Search sections and actions..."
+                  placeholder="Search pages and actions..."
                   className="h-14 w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground"
                 />
-                <kbd className="rounded border border-border bg-muted px-1.5 py-0.5 text-[10px]">
-                  ESC
-                </kbd>
+                <kbd className="rounded border border-border bg-muted px-1.5 py-0.5 text-[10px]">ESC</kbd>
               </div>
               <ul className="max-h-80 overflow-y-auto p-2">
                 {filtered.length === 0 && (
@@ -171,14 +154,10 @@ export function CommandPalette() {
                       className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-left text-sm transition-colors hover:bg-muted"
                     >
                       <span className="flex items-center gap-3">
-                        <span className="text-muted-foreground">
-                          {iconFor(item.label)}
-                        </span>
+                        <span className="text-muted-foreground">{iconFor(item.label)}</span>
                         {item.label}
                       </span>
-                      <span className="text-xs text-muted-foreground">
-                        {item.hint}
-                      </span>
+                      <span className="text-xs text-muted-foreground">{item.hint}</span>
                     </button>
                   </li>
                 ))}

@@ -1,10 +1,9 @@
-
 import { useState } from "react";
 import { Send, Heart } from "lucide-react";
+import { Link } from "wouter";
 import { navItems, siteConfig } from "@/constants/site";
 import { socials } from "@/data/socials";
 import { services } from "@/data/services";
-import { scrollToId } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 export function Footer() {
@@ -28,18 +27,15 @@ export function Footer() {
     <footer className="relative border-t border-border bg-muted/30">
       <div className="container-wide py-16">
         <div className="grid gap-12 lg:grid-cols-4">
+
           {/* Brand */}
           <div className="lg:col-span-1">
-            <button
-              type="button"
-              onClick={() => scrollToId("home")}
-              className="flex items-center gap-2"
-            >
+            <Link href="/" className="flex items-center gap-2">
               <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary via-accent to-secondary text-sm font-bold text-white">
                 {initials}
               </span>
               <span className="font-semibold">{siteConfig.name}</span>
-            </button>
+            </Link>
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
               {siteConfig.tagline}
             </p>
@@ -67,13 +63,12 @@ export function Footer() {
             <ul className="mt-4 grid grid-cols-2 gap-2 text-sm text-muted-foreground">
               {navItems.slice(0, 8).map((item) => (
                 <li key={item.href}>
-                  <button
-                    type="button"
-                    onClick={() => scrollToId(item.href.replace("#", ""))}
+                  <Link
+                    href={item.href}
                     className="transition-colors hover:text-primary"
                   >
                     {item.label}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -87,13 +82,12 @@ export function Footer() {
             <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
               {services.slice(0, 6).map((service) => (
                 <li key={service.title}>
-                  <button
-                    type="button"
-                    onClick={() => scrollToId("services")}
+                  <Link
+                    href="/services"
                     className="text-left transition-colors hover:text-primary"
                   >
                     {service.title}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -137,7 +131,7 @@ export function Footer() {
           </p>
           <p className="flex items-center gap-1.5">
             Built with <Heart className="h-4 w-4 fill-red-500 text-red-500" /> using
-            Next.js & Tailwind CSS
+            React & Tailwind CSS
           </p>
         </div>
       </div>

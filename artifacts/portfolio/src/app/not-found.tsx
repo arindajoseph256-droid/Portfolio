@@ -24,7 +24,7 @@ export default function NotFound() {
           </a>
         </Button>
         <Button asChild variant="outline" size="lg">
-          <a href="/#contact">
+          <a href="/contact">
             <ArrowLeft className="h-4 w-4" />
             Contact Me
           </a>
