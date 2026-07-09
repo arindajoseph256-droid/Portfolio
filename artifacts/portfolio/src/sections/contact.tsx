@@ -62,8 +62,13 @@ export function Contact() {
         });
         if (!res.ok) throw new Error("Request failed");
       } else {
-        // No provider configured — simulate a successful submission.
-        await new Promise((resolve) => setTimeout(resolve, 1200));
+        // Open the visitor's email client pre-filled — lands directly in Arinda's inbox.
+        const subject = encodeURIComponent(`Portfolio enquiry from ${form.name}`);
+        const body = encodeURIComponent(
+          `Name: ${form.name}\nFrom: ${form.email}\n\n${form.message}`,
+        );
+        window.location.href = `mailto:${siteConfig.email}?subject=${subject}&body=${body}`;
+        await new Promise((resolve) => setTimeout(resolve, 400));
       }
       setStatus("success");
       setForm({ name: "", email: "", message: "" });

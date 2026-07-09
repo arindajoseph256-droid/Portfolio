@@ -12,7 +12,7 @@ export const siteConfig = {
     "Arinda Joseph is a software engineer and full-stack web & AI developer from Uganda, building intelligent, production-ready software that solves real-world problems.",
   url: import.meta.env.VITE_SITE_URL ?? "https://arindajoseph.vercel.app",
   email: "arindajoseph256@gmail.com",
-  phone: "+256 700 000 000",
+  phone: "+256 767 760 376",
   cv: "/arinda-joseph-cv.pdf",
   ogImage: "/og-image.png",
   keywords: [
