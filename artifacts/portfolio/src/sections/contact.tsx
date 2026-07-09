@@ -25,7 +25,7 @@ interface FormErrors {
   message?: string;
 }
 
-const formspreeId = import.meta.env.VITE_FORMSPREE_ID;
+const web3formsKey = import.meta.env.VITE_WEB3FORMS_KEY;
 
 export function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -54,22 +54,20 @@ export function Contact() {
     setStatus("loading");
 
     try {
-      if (formspreeId) {
-        const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify(form),
-        });
-        if (!res.ok) throw new Error("Request failed");
-      } else {
-        // Open the visitor's email client pre-filled — lands directly in Arinda's inbox.
-        const subject = encodeURIComponent(`Portfolio enquiry from ${form.name}`);
-        const body = encodeURIComponent(
-          `Name: ${form.name}\nFrom: ${form.email}\n\n${form.message}`,
-        );
-        window.location.href = `mailto:${siteConfig.email}?subject=${subject}&body=${body}`;
-        await new Promise((resolve) => setTimeout(resolve, 400));
-      }
+      if (!web3formsKey) throw new Error("No key");
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: web3formsKey,
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          subject: `Portfolio enquiry from ${form.name}`,
+        }),
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error("Submission failed");
       setStatus("success");
       setForm({ name: "", email: "", message: "" });
       setTimeout(() => setStatus("idle"), 5000);
