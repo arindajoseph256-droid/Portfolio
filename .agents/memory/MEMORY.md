@@ -1,0 +1,1 @@
+- [Vercel portfolio migration](vercel-portfolio-migration.md) — SiOpenai missing from react-icons@5.7.0/si; use SiHuggingface as substitute.
